@@ -24,10 +24,10 @@ void testAccess() {
       await $.pumpWidgetAndSettle(const MyApp());
 
       await $(#_checkAccessButton).tap();
+
       await $(#_checkLocationAccessButton).tap();
       await $.pump(const Duration(seconds: 1));
       expect($(#_locationAccessStatusText).text, 'Restricted');
-
       await $(#_requestLocationAccessButton).tap();
       await $.pump(const Duration(seconds: 1));
       await $.native.grantPermissionWhenInUse();
@@ -38,18 +38,8 @@ void testAccess() {
       await $(#_checkPhotosAccessButton).tap();
       await $.pump(const Duration(seconds: 1));
       expect($(#_photosAccessStatusText).text, 'Restricted');
-
       await $(#_requestPhotosAccessButton).tap();
-
-
-      final request = await $.native.isPermissionDialogVisible(
-        timeout: const Duration(seconds: 5),
-      );
-      if (request) {
-        await $.native.grantPermissionWhenInUse();
-      }
       await $.pump(const Duration(seconds: 1));
-
       if (Platform.isAndroid) {
         await $.native.tap(Selector(text: 'Allow'));
       } else if (Platform.isIOS) {

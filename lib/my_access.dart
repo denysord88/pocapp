@@ -11,7 +11,7 @@ class MyAccess extends StatefulWidget {
 }
 
 class MyAccessState extends State<MyAccess> {
-  String locationAccess = 'press check1';
+  String locationAccess = 'press check';
   String photosAccess = 'press check';
 
   @override

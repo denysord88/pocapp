@@ -29,7 +29,6 @@ void testWebView() {
         timeout: const Duration(seconds: 15),
       );
       await $.pump(const Duration(seconds: 5));
-      await $.native.tap(Selector(textContains: 'English'));
       await $.native.tap(Selector(text: 'Увійти'));
       await $.native
           .tap(Selector(text: 'Електронна адреса або номер телефону'));

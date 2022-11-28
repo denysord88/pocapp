@@ -4,8 +4,6 @@ import 'package:flutter_driver/driver_extension.dart';
 import 'my_google_map.dart';
 import 'my_web_view.dart';
 import 'my_access.dart';
-import 'my_radio_buttons.dart';
-import 'my_toggles.dart';
 
 void main() {
   enableFlutterDriverExtension();
@@ -46,10 +44,7 @@ class FirstRoute extends State<MyCustomForm> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        title: const Text(
-          'App example for automation testing',
-          key: Key('_homePageTitle'),
-        ),
+        title: const Text('App example for automation testing'),
         backgroundColor: Colors.blueGrey,
         centerTitle: true,
       ),
@@ -107,68 +102,45 @@ class FirstRoute extends State<MyCustomForm> {
                   ]),
             ),
             TextButton(
-              key: const Key('_radioButton'),
               style: getButtonStyle(),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const MyRadioButton()),
-                );
-              },
-              child: const Text('Radio Buttons testing'),
-            ),
-            /*TextButton(
-              style: getButtonStyle(),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => XXX()),
-                );
-              },
-              child: const Text('Checkboxes testing'),
+              onPressed: () {},
+              child: const Text('Text fields testing'),
             ),
             TextButton(
               style: getButtonStyle(),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => XXX()),
-                );
-              },
-              child: const Text('Slider testing'),
+              onPressed: () {},
+              child: const Text('Colors testing'),
             ),
             TextButton(
               style: getButtonStyle(),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => XXX()),
-                );
-              },
-              child: const Text('Picker testing'),
-            ),*/
-            TextButton(
-              key: const Key('_toggles'),
-              style: getButtonStyle(),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => MyToggles()),
-                );
-              },
-              child: const Text('Toggle testing'),
+              onPressed: () {},
+              child: const Text('Gallery management'),
             ),
-            /*TextButton(
+            TextButton(
               style: getButtonStyle(),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => XXX()),
-                );
-              },
-              child: const Text('Сarrousel testing'),
-            ),*/
+              onPressed: () {},
+              child: const Text('Files management'),
+            ),
+            TextButton(
+              style: getButtonStyle(),
+              onPressed: () {},
+              child: const Text('Camera testing'),
+            ),
+            TextButton(
+              style: getButtonStyle(),
+              onPressed: () {},
+              child: const Text('List'),
+            ),
+            TextButton(
+              style: getButtonStyle(),
+              onPressed: () {},
+              child: const Text('Table'),
+            ),
+            TextButton(
+              style: getButtonStyle(),
+              onPressed: () {},
+              child: const Text('Сarrousel'),
+            ),
             TextButton(
               key: const Key('_checkAccessButton'),
               style: getButtonStyle(),

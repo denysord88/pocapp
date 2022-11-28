@@ -39,8 +39,6 @@ dependencies:
   permission_handler: ^10.2.0
   google_maps_flutter: ^2.2.1
   webview_flutter: ^3.0.4
-  toggle_switch: ^2.0.1
-  font_awesome_flutter: ^10.2.1
 
 dev_dependencies:
   test: any
