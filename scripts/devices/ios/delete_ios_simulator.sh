@@ -1,0 +1,3 @@
+xcrun simctl shutdown NewApp_TA_iPhone_14_Pro_Max_iOS_16_1
+xcrun simctl delete NewApp_TA_iPhone_14_Pro_Max_iOS_16_1
+xcrun simctl list devices
