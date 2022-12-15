@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_driver/driver_extension.dart';
 
-import 'my_google_map.dart';
 import 'my_web_view.dart';
 import 'my_access.dart';
 
@@ -54,17 +53,6 @@ class FirstRoute extends State<MyCustomForm> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            TextButton(
-              key: const Key('_map'),
-              style: getButtonStyle(),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => MyGoogleMap()),
-                );
-              },
-              child: const Text('See the Google Map'),
-            ),
             Container(
               color: const Color(0xffccccff),
               child: Column(
