@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_driver/driver_extension.dart';
 
-import 'my_web_view.dart';
 import 'my_access.dart';
 
 void main() {
@@ -53,42 +52,6 @@ class FirstRoute extends State<MyCustomForm> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Container(
-              color: const Color(0xffccccff),
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    TextField(
-                      key: const Key('_webViewTextField'),
-                      controller: myController,
-                      decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: 'Enter your URL',
-                        hintText: 'https://...',
-                      ),
-                      style: const TextStyle(
-                        height: 1,
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(5),
-                      child: TextButton(
-                        key: const Key('_webViewButton'),
-                        style: getButtonStyle(),
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    MyWebView(url: myController.text)),
-                          );
-                        },
-                        child: const Text('Open the WebView'),
-                      ),
-                    ),
-                  ]),
-            ),
             TextButton(
               style: getButtonStyle(),
               onPressed: () {},
