@@ -18,7 +18,7 @@ public class Configuration {
     public static final int TESTING_THREADS = Integer.parseInt(get("TA_TESTING_THREADS"));
     public static final String[] EXCLUDED_GROUPS = get("TA_EXCLUDED_GROUPS").split(",");
     public static final String SCREENSHOTS_PATH = get("TA_SCREENSHOTS_PATH");
-    public static final String IOS_APP_PATH = get("TA_IOS_APP_PATH");
+    public static final String IOS_APP_PATH = get("BITRISE_APP_DIR_PATH");
     public static final String ANDROID_APP_PATH = get("BITRISE_APK_PATH");
     public static final boolean ENABLE_LOGGING = Boolean.parseBoolean(get("TA_ENABLE_LOGGING"));
     public static final boolean USE_PREBUILT_WDA = Boolean.parseBoolean(get("TA_USE_PREBUILT_WDA"));
