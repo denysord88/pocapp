@@ -13,7 +13,7 @@ public class Configuration {
     public static final String PASSWORD = get("TA_USER_PASSWORD");
     public static final String[] IOS_VERSIONS = get("TA_IOS_VERSIONS").split(",");
     public static final String[] IOS_DEVICES = get("TA_IOS_DEVICES").split(",");
-    public static final String IOS_SIMULATOR_UUID = get("TA_IOS_SIMULATOR_UUID");
+    public static final String IOS_SIMULATOR_UUID = get("TA_IOS_SIMULATOR_UUID").trim();
     public static final String[] ANDROID_VERSIONS = get("TA_ANDROID_VERSIONS").split(",");
     public static final String[] ANDROID_DEVICES = get("TA_ANDROID_DEVICES").split(",");
     public static final int TESTING_THREADS = Integer.parseInt(get("TA_TESTING_THREADS"));
