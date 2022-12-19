@@ -12,8 +12,7 @@ import java.io.IOException;
 import java.time.Duration;
 
 import static com.denysord88.appium.AppiumController.runAppiumService;
-import static com.denysord88.conf.Configuration.EXPLICITLY_WAIT_SECONDS;
-import static com.denysord88.conf.Configuration.IMPLICITLY_WAIT_SECONDS;
+import static com.denysord88.conf.Configuration.*;
 
 public class AppiumiOSInstance extends AppiumInstance {
 
@@ -57,7 +56,11 @@ public class AppiumiOSInstance extends AppiumInstance {
         capabilities.setCapability(IOSMobileCapabilityType.USE_PREBUILT_WDA, Configuration.USE_PREBUILT_WDA);
         capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, iOSVersion);
         capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, MobilePlatform.IOS);
-        capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, deviceName);
+        if (IOS_SIMULATOR_UUID == null || IOS_SIMULATOR_UUID.isEmpty()) {
+            capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, deviceName);
+        } else {
+            capabilities.setCapability(MobileCapabilityType.UDID, IOS_SIMULATOR_UUID);
+        }
         capabilities.setCapability(IOSMobileCapabilityType.WDA_LOCAL_PORT, simulatorPort);
         capabilities.setCapability(IOSMobileCapabilityType.AUTO_ACCEPT_ALERTS, false);
         capabilities.setCapability(IOSMobileCapabilityType.AUTO_DISMISS_ALERTS, false);
