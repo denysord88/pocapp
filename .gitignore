@@ -32,6 +32,16 @@ migrate_working_dir/
 .pub/
 /build/
 
+TA_Appium_POCAPP/**/doc/api/
+TA_Appium_POCAPP/**/ios/Flutter/.last_build_id
+TA_Appium_POCAPP/.dart_tool/
+TA_Appium_POCAPP/.flutter-plugins
+TA_Appium_POCAPP/.flutter-plugins-dependencies
+TA_Appium_POCAPP/.packages
+TA_Appium_POCAPP/.pub-cache/
+TA_Appium_POCAPP/.pub/
+TA_Appium_POCAPP/build/
+
 # Symbolication related
 app.*.symbols
 
