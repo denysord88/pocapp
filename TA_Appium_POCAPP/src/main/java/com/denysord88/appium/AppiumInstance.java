@@ -56,26 +56,26 @@ public class AppiumInstance {
     protected DesiredCapabilities prepareDriverCapabilities() {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         // Logging
-        capabilities.setCapability(MobileCapabilityType.ENABLE_PERFORMANCE_LOGGING, ENABLE_LOGGING);
+        //capabilities.setCapability(MobileCapabilityType.ENABLE_PERFORMANCE_LOGGING, ENABLE_LOGGING);
         //capabilities.setCapability("skipLogCapture", !ENABLE_LOGGING);
         //capabilities.setCapability("skipLogcatCapture", !ENABLE_LOGGING);
-        capabilities.setCapability("appium:retryBackoffTime", 1000);
-        capabilities.setCapability("appium:maxRetryCount", 60);
+        //capabilities.setCapability("appium:retryBackoffTime", 1000);
+        //capabilities.setCapability("appium:maxRetryCount", 60);
 
         // Timeouts
         int defSec = 1;
         capabilities.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, 60000);
-        capabilities.setCapability("appWaitDuration", 60000);
-        capabilities.setCapability("deviceReadyTimeout", 60000);
+        //capabilities.setCapability("appWaitDuration", 60000);
+        //capabilities.setCapability("deviceReadyTimeout", 60000);
 
-        capabilities.setCapability("appium:retryBackoffTime", 60000);
-        capabilities.setCapability("appium:keepAliveTimeout", 60000);
+        //capabilities.setCapability("appium:retryBackoffTime", 60000);
+        //capabilities.setCapability("appium:keepAliveTimeout", 60000);
 
         capabilities.setCapability(MobileCapabilityType.LANGUAGE, LANGUAGE);
         capabilities.setCapability(MobileCapabilityType.LOCALE, LOCALE);
 
         capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "Flutter");
-        capabilities.setCapability("appium-version", "2.0.0-beta.46");
+        //capabilities.setCapability("appium-version", "2.0.0-beta.46");
         capabilities.setCapability(MobileCapabilityType.NO_RESET, true);
         return capabilities;
     }
