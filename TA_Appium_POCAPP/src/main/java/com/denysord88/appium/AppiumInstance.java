@@ -71,8 +71,8 @@ public class AppiumInstance {
         //capabilities.setCapability("appium:retryBackoffTime", 60000);
         //capabilities.setCapability("appium:keepAliveTimeout", 60000);
 
-        capabilities.setCapability(MobileCapabilityType.LANGUAGE, LANGUAGE);
-        capabilities.setCapability(MobileCapabilityType.LOCALE, LOCALE);
+        //capabilities.setCapability(MobileCapabilityType.LANGUAGE, LANGUAGE);
+        //capabilities.setCapability(MobileCapabilityType.LOCALE, LOCALE);
 
         capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "Flutter");
         //capabilities.setCapability("appium-version", "2.0.0-beta.46");
