@@ -43,17 +43,17 @@ public class AppiumiOSInstance extends AppiumInstance {
 
     private DesiredCapabilities prepareiOSDriverCapabilities(String simulatorPort, String iOSVersion, String deviceName) {
         DesiredCapabilities capabilities = super.prepareDriverCapabilities();
-        //capabilities.setCapability(IOSMobileCapabilityType.SHOW_IOS_LOG, Configuration.ENABLE_LOGGING);
-        //capabilities.setCapability(IOSMobileCapabilityType.SHOW_XCODE_LOG, Configuration.ENABLE_LOGGING);
+        capabilities.setCapability(IOSMobileCapabilityType.SHOW_IOS_LOG, Configuration.ENABLE_LOGGING);
+        capabilities.setCapability(IOSMobileCapabilityType.SHOW_XCODE_LOG, Configuration.ENABLE_LOGGING);
 
         // Timeouts
         //capabilities.setCapability(IOSMobileCapabilityType.SCREENSHOT_WAIT_TIMEOUT, 60000);
-        //capabilities.setCapability("webkitResponseTimeout", 60000);
-        //capabilities.setCapability(IOSMobileCapabilityType.IOS_INSTALL_PAUSE, 20000);
-        //capabilities.setCapability(IOSMobileCapabilityType.WDA_LAUNCH_TIMEOUT, 30000);
-        //capabilities.setCapability(IOSMobileCapabilityType.WDA_CONNECTION_TIMEOUT, 30000);
+        capabilities.setCapability("webkitResponseTimeout", 60000);
+        capabilities.setCapability(IOSMobileCapabilityType.IOS_INSTALL_PAUSE, 20000);
+        capabilities.setCapability(IOSMobileCapabilityType.WDA_LAUNCH_TIMEOUT, 30000);
+        capabilities.setCapability(IOSMobileCapabilityType.WDA_CONNECTION_TIMEOUT, 30000);
 
-        //capabilities.setCapability(IOSMobileCapabilityType.USE_PREBUILT_WDA, Configuration.USE_PREBUILT_WDA);
+        capabilities.setCapability(IOSMobileCapabilityType.USE_PREBUILT_WDA, Configuration.USE_PREBUILT_WDA);
         capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, iOSVersion);
         capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, MobilePlatform.IOS);
         if (IOS_SIMULATOR_UUID == null || IOS_SIMULATOR_UUID.isEmpty()) {
@@ -61,12 +61,12 @@ public class AppiumiOSInstance extends AppiumInstance {
         } else {
             capabilities.setCapability(MobileCapabilityType.UDID, IOS_SIMULATOR_UUID);
         }
-        //capabilities.setCapability(IOSMobileCapabilityType.WDA_LOCAL_PORT, simulatorPort);
-        //capabilities.setCapability(IOSMobileCapabilityType.AUTO_ACCEPT_ALERTS, false);
-        //capabilities.setCapability(IOSMobileCapabilityType.AUTO_DISMISS_ALERTS, false);
+        capabilities.setCapability(IOSMobileCapabilityType.WDA_LOCAL_PORT, Integer.parseInt(simulatorPort));
+        capabilities.setCapability(IOSMobileCapabilityType.AUTO_ACCEPT_ALERTS, false);
+        capabilities.setCapability(IOSMobileCapabilityType.AUTO_DISMISS_ALERTS, false);
         capabilities.setCapability(MobileCapabilityType.APP, Configuration.IOS_APP_PATH);
         //capabilities.setCapability(IOSMobileCapabilityType.APP_NAME, "Pocapp");
-        //capabilities.setCapability(IOSMobileCapabilityType.BUNDLE_ID, "com.denysord1988.pocapp");
+        capabilities.setCapability(IOSMobileCapabilityType.BUNDLE_ID, "com.denysord1988.pocapp");
         //capabilities.setCapability(IOSMobileCapabilityType.ALLOW_TOUCHID_ENROLL, true);
         return capabilities;
     }

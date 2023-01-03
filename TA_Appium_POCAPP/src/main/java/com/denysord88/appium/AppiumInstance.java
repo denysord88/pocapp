@@ -56,7 +56,7 @@ public class AppiumInstance {
     protected DesiredCapabilities prepareDriverCapabilities() {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         // Logging
-        //capabilities.setCapability(MobileCapabilityType.ENABLE_PERFORMANCE_LOGGING, ENABLE_LOGGING);
+        capabilities.setCapability(MobileCapabilityType.ENABLE_PERFORMANCE_LOGGING, ENABLE_LOGGING);
         //capabilities.setCapability("skipLogCapture", !ENABLE_LOGGING);
         //capabilities.setCapability("skipLogcatCapture", !ENABLE_LOGGING);
         //capabilities.setCapability("appium:retryBackoffTime", 1000);
