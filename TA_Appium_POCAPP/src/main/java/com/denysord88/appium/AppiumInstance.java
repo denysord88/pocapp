@@ -60,7 +60,7 @@ public class AppiumInstance {
         //capabilities.setCapability("skipLogCapture", !ENABLE_LOGGING);
         //capabilities.setCapability("skipLogcatCapture", !ENABLE_LOGGING);
         //capabilities.setCapability("appium:retryBackoffTime", 1000);
-        //capabilities.setCapability("appium:maxRetryCount", 60);
+        capabilities.setCapability("appium:noReset", false);
 
         // Timeouts
         int defSec = 1;
