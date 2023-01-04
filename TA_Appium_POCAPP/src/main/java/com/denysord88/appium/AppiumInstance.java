@@ -76,7 +76,6 @@ public class AppiumInstance {
 
         capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "Flutter");
         //capabilities.setCapability("appium-version", "2.0.0-beta.46");
-        capabilities.setCapability(MobileCapabilityType.NO_RESET, true);
         return capabilities;
     }
 }

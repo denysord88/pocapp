@@ -81,7 +81,6 @@ public class AppiumAndroidInstance extends AppiumInstance {
         capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, MobilePlatform.ANDROID);
         capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "TA_" + deviceName);
         capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "Flutter");
-        capabilities.setCapability(MobileCapabilityType.NO_RESET, true);
         capabilities.setCapability(MobileCapabilityType.APP, Configuration.ANDROID_APP_PATH);
         return capabilities;
     }
