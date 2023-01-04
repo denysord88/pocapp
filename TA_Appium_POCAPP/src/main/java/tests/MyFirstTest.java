@@ -47,7 +47,7 @@ public class MyFirstTest {
         capabilities.setCapability(IOSMobileCapabilityType.WDA_LAUNCH_TIMEOUT, 30000);
         capabilities.setCapability(IOSMobileCapabilityType.WDA_CONNECTION_TIMEOUT, 30000);
         capabilities.setCapability(IOSMobileCapabilityType.USE_PREBUILT_WDA, false);
-        capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "16.2");
+        capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "16.1");
         capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, MobilePlatform.IOS);
         if (IOS_SIMULATOR_UUID.isEmpty()) {
             capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "iPhone 13 Pro Max");
