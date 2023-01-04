@@ -1,5 +1,6 @@
 package com.denysord88.appium;
 
+import com.denysord88.Main;
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.remote.IOSMobileCapabilityType;
 import io.appium.java_client.remote.MobileCapabilityType;
@@ -19,14 +20,14 @@ public class AppiumiOSInstance extends AppiumInstance {
     public AppiumiOSInstance(String wdaPort, String simulatorPort, String iOSVersion, String deviceName) {
         service = runAppiumService(wdaPort);
         DesiredCapabilities capabilities = prepareiOSDriverCapabilities(simulatorPort, iOSVersion, deviceName);
-        System.out.println("[TA_FE] Starting iOS driver with Appium service URL '" + service.getUrl() +
+        System.out.println("[TA_FE] (" + Main.stopwatch + ") Starting iOS driver with Appium service URL '" + service.getUrl() +
                 "' and Capabilities:\n" + capabilities);
         driver = new IOSDriver(service.getUrl(), capabilities);
-        System.out.println("[TA_FE] iOS driver started");
-        System.out.println("[TA_FE] flutter:waitForFirstFrame - Started");
+        System.out.println("[TA_FE] (" + Main.stopwatch + ") iOS driver started");
+        System.out.println("[TA_FE] (" + Main.stopwatch + ") flutter:waitForFirstFrame - Started");
         driver.executeScript("flutter:waitForFirstFrame");
         wait = new WebDriverWait(driver, Duration.ofSeconds(EXPLICITLY_WAIT_SECONDS));
-        System.out.println("[TA_FE] flutter:waitForFirstFrame - Done");
+        System.out.println("[TA_FE] (" + Main.stopwatch + ") flutter:waitForFirstFrame - Done");
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(IMPLICITLY_WAIT_SECONDS));
         //UDID = driver.getCapabilities().getCapability("udid").toString();
     }
