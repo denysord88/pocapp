@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      title: 'Retrieve Text Input',
+      title: 'App example',
       home: MyCustomForm(),
     );
   }
@@ -42,7 +42,7 @@ class FirstRoute extends State<MyCustomForm> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        title: const Text('App example for automation testing'),
+        title: const Text('App example'),
         backgroundColor: Colors.blueGrey,
         centerTitle: true,
       ),
@@ -52,46 +52,6 @@ class FirstRoute extends State<MyCustomForm> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            TextButton(
-              style: getButtonStyle(),
-              onPressed: () {},
-              child: const Text('Text fields testing'),
-            ),
-            TextButton(
-              style: getButtonStyle(),
-              onPressed: () {},
-              child: const Text('Colors testing'),
-            ),
-            TextButton(
-              style: getButtonStyle(),
-              onPressed: () {},
-              child: const Text('Gallery management'),
-            ),
-            TextButton(
-              style: getButtonStyle(),
-              onPressed: () {},
-              child: const Text('Files management'),
-            ),
-            TextButton(
-              style: getButtonStyle(),
-              onPressed: () {},
-              child: const Text('Camera testing'),
-            ),
-            TextButton(
-              style: getButtonStyle(),
-              onPressed: () {},
-              child: const Text('List'),
-            ),
-            TextButton(
-              style: getButtonStyle(),
-              onPressed: () {},
-              child: const Text('Table'),
-            ),
-            TextButton(
-              style: getButtonStyle(),
-              onPressed: () {},
-              child: const Text('Сarrousel'),
-            ),
             TextButton(
               key: const Key('_checkAccessButton'),
               style: getButtonStyle(),

@@ -1,41 +1,38 @@
 package com.denysord88;
 
-import com.google.common.base.Stopwatch;
-import io.appium.java_client.remote.MobilePlatform;
+import org.testng.TestListenerAdapter;
 import org.testng.TestNG;
+import org.testng.xml.XmlPackage;
 import org.testng.xml.XmlSuite;
+import org.testng.xml.XmlTest;
 
-import java.util.*;
-
-import static com.denysord88.conf.Configuration.*;
-import static com.denysord88.testng.TNGController.*;
-import static tests.BaseTest.checkAndFixScreenshotsPath;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 public class Main {
-    public static Stopwatch stopwatch = Stopwatch.createStarted();
-    public static final String SCREENSHOTS_FULL_PATH = SCREENSHOTS_PATH + "/" + new Date() + "/";
-
     public static void main(String[] args) {
-        System.out.println("[TA_FE] (" + Main.stopwatch + ") Checking the screenshots path");
-        checkAndFixScreenshotsPath();
-        System.out.println("[TA_FE] (" + Main.stopwatch + ") Screenshots path verified and fixed");
 
-        // createTestNGSuite
-        System.out.println("[TA_FE] (" + Main.stopwatch + ") Creating TestNG XML suite");
-        XmlSuite suite = createTestNGSuite("TestNG XML created from Java Code");
-        System.out.println("[TA_FE] (" + Main.stopwatch + ") TestNG XML suite created");
+        XmlSuite suite = new XmlSuite();
+        suite.setName("TestNG XML created from Java Code");
 
-        // generateTests
-        System.out.println("[TA_FE] (" + Main.stopwatch + ") Generating tests");
-        generateTests(suite);
-        System.out.println("[TA_FE] (" + Main.stopwatch + ") Tests generated");
+        XmlTest test = new XmlTest(suite);
+        test.setName("Test on iOS v16.1; Device name: iPhone 13 Pro Max;");
 
-        // generateTestNGRunner
-        System.out.println("[TA_FE] (" + Main.stopwatch + ") Generating TestNG Runner");
-        TestNG runner = generateTestNGRunner(suite);
-        System.out.println("[TA_FE] (" + Main.stopwatch + ") TestNG Runner generated");
+        List<XmlPackage> packages = new LinkedList<>();
+        packages.add(new XmlPackage("tests.*"));
+        packages.add(new XmlPackage("tests.*.*"));
+        test.setXmlPackages(packages);
 
-        System.out.println("[TA_FE] (" + Main.stopwatch + ") Running tests");
+        TestNG runner = new TestNG();
+        runner.setUseDefaultListeners(false);
+        TestListenerAdapter tla = new TestListenerAdapter();
+        runner.addListener(tla);
+
+        List<XmlSuite> suiteFiles = new ArrayList<>();
+        suiteFiles.add(suite);
+        runner.setXmlSuites(suiteFiles);
+
         runner.run();
     }
 }
