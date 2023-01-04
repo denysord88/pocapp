@@ -29,13 +29,17 @@ public class TNGController {
 
     public static void generateTests(XmlSuite suite) {
         int simulatorPort = getFreePortFrom(4000);
+        System.out.println("[TA_FE] Simulator port " + simulatorPort);
         int wdaPort = getFreePortFrom(4200);
+        System.out.println("[TA_FE] WDA Port " + wdaPort);
 
         if (IOS_VERSIONS.length > 0 && !IOS_VERSIONS[0].isEmpty()) {
             for (int iosVersionNum = 0; iosVersionNum < IOS_VERSIONS.length; iosVersionNum++) {
                 String iOSVersion = IOS_VERSIONS[iosVersionNum];
                 for (int simulatorNum = 0; simulatorNum < IOS_DEVICES.length; simulatorNum++) {
                     String simulatorName = IOS_DEVICES[simulatorNum];
+                    System.out.println("[TA_FE] Generating tests for '" + simulatorName +
+                            "' with OS version '" + iOSVersion + "'");
                     XmlTest test = new XmlTest(suite);
                     test.setName("Test on " + MobilePlatform.IOS + " v" + iOSVersion + "; " + "Device name: " + simulatorName + ";");
                     test.addParameter("simulatorPort", "" + (simulatorPort));
@@ -54,6 +58,8 @@ public class TNGController {
                     test.setXmlPackages(packages);
 
                     test.setExcludedGroups(Arrays.asList(EXCLUDED_GROUPS));
+                    System.out.println("[TA_FE] Tests for '" + simulatorName +
+                            "' with OS version '" + iOSVersion + "' generated");
                 }
             }
         }

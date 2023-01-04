@@ -19,9 +19,14 @@ public class AppiumiOSInstance extends AppiumInstance {
     public AppiumiOSInstance(String wdaPort, String simulatorPort, String iOSVersion, String deviceName) {
         service = runAppiumService(wdaPort);
         DesiredCapabilities capabilities = prepareiOSDriverCapabilities(simulatorPort, iOSVersion, deviceName);
+        System.out.println("[TA_FE] Starting iOS driver with Appium service URL '" + service.getUrl() +
+                "' and Capabilities:\n" + capabilities);
         driver = new IOSDriver(service.getUrl(), capabilities);
+        System.out.println("[TA_FE] iOS driver started");
+        System.out.println("[TA_FE] flutter:waitForFirstFrame - Started");
         driver.executeScript("flutter:waitForFirstFrame");
         wait = new WebDriverWait(driver, Duration.ofSeconds(EXPLICITLY_WAIT_SECONDS));
+        System.out.println("[TA_FE] flutter:waitForFirstFrame - Done");
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(IMPLICITLY_WAIT_SECONDS));
         //UDID = driver.getCapabilities().getCapability("udid").toString();
     }

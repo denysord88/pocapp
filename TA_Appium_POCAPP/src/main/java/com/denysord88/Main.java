@@ -16,17 +16,26 @@ public class Main {
     public static final String SCREENSHOTS_FULL_PATH = SCREENSHOTS_PATH + "/" + new Date() + "/";
 
     public static void main(String[] args) {
+        System.out.println("[TA_FE] Checking the screenshots path");
         checkAndFixScreenshotsPath();
+        System.out.println("[TA_FE] Screenshots path verified and fixed");
 
         // createTestNGSuite
+        System.out.println("[TA_FE] Creating TestNG XML suite");
         XmlSuite suite = createTestNGSuite("TestNG XML created from Java Code");
+        System.out.println("[TA_FE] TestNG XML suite created");
 
         // generateTests
+        System.out.println("[TA_FE] Generating tests");
         generateTests(suite);
+        System.out.println("[TA_FE] Tests generated");
 
         // generateTestNGRunner
+        System.out.println("[TA_FE] Generating TestNG Runner");
         TestNG runner = generateTestNGRunner(suite);
+        System.out.println("[TA_FE] TestNG Runner generated");
 
+        System.out.println("[TA_FE] Running tests");
         runner.run();
     }
 }

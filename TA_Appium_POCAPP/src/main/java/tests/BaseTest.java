@@ -24,10 +24,16 @@ public class BaseTest {
     @BeforeTest
     @Parameters({"wdaPort", "simulatorPort", "OSVersion", "deviceName", "platform"})
     public void setUpAppium(String wdaPort, String simulatorPort, String OSVersion, String deviceName, String platform) {
+        System.out.println("[TA_FE] @BeforeTest with params: wdaPort=" + wdaPort + " simulatorPort=" + simulatorPort +
+                " OSVersion='" + OSVersion + "' deviceName='" + deviceName + "' platform='" + platform + "'");
         if(platform.equals(MobilePlatform.IOS)) {
+            System.out.println("[TA_FE] Initialising iOS driver");
             initiOSDriver(wdaPort, simulatorPort, OSVersion, deviceName);
+            System.out.println("[TA_FE] iOS driver initialised");
         } else if (platform.equals(MobilePlatform.ANDROID)) {
+            System.out.println("[TA_FE] Initialising Android driver");
             initAndroidDriver(wdaPort, simulatorPort, OSVersion, deviceName);
+            System.out.println("[TA_FE] Android driver initialised");
         }
     }
 

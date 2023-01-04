@@ -9,6 +9,7 @@ import static com.denysord88.conf.Configuration.ENABLE_LOGGING;
 
 public class AppiumController {
     public static AppiumDriverLocalService runAppiumService(String wdaPort) {
+        System.out.println("[TA_FE] Starting Appium service with WDA port " + wdaPort);
         AppiumDriverLocalService service = AppiumDriverLocalService.
                 buildService(new AppiumServiceBuilder()
                         .usingPort(Integer.parseInt(wdaPort))
@@ -16,6 +17,7 @@ public class AppiumController {
                         .withArgument(() -> "--allow-insecure", "get_server_logs")
                         .withArgument(() -> "--log-level", ENABLE_LOGGING ? "debug" : "error"));
         service.start();
+        System.out.println("[TA_FE] Appium service started");
 
         if (service == null || !service.isRunning()) {
             throw new AppiumServerHasNotBeenStartedLocallyException("An appium server node is not started");
