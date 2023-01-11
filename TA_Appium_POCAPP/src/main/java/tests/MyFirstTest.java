@@ -43,7 +43,7 @@ public class MyFirstTest {
         capabilities.setCapability(IOSMobileCapabilityType.SHOW_IOS_LOG, true);
         capabilities.setCapability(IOSMobileCapabilityType.SHOW_XCODE_LOG, true);
         capabilities.setCapability("webkitResponseTimeout", 60000);
-        capabilities.setCapability(IOSMobileCapabilityType.IOS_INSTALL_PAUSE, 20000);
+        capabilities.setCapability(IOSMobileCapabilityType.IOS_INSTALL_PAUSE, 60000);
         capabilities.setCapability(IOSMobileCapabilityType.WDA_LAUNCH_TIMEOUT, 30000);
         capabilities.setCapability(IOSMobileCapabilityType.WDA_CONNECTION_TIMEOUT, 30000);
         capabilities.setCapability(IOSMobileCapabilityType.USE_PREBUILT_WDA, false);
