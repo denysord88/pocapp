@@ -109,11 +109,10 @@ public class MyFirstTest {
         Thread.sleep(120000);
         driver.activateApp("com.denysord1988.pocapp");
         System.out.println("!!! 7");
-        //Thread.sleep(60000);
-        //driver.executeScript("flutter:waitForFirstFrame");
-        FlutterFinder finder = new FlutterFinder(driver);
+        Thread.sleep(60000);
+        driver.executeScript("flutter:waitForFirstFrame");
         System.out.println("!!! 8");
-        //Thread.sleep(60000);
+        FlutterFinder finder = new FlutterFinder(driver);
         finder.byText("Check access").click();
         assertEquals(finder.byValueKey("_accessHeaderTitle").getText(), "Access");
 
