@@ -102,19 +102,17 @@ public class MyFirstTest {
 
     @Test()
     public void accessTest() throws InterruptedException {
-        //System.out.println("!!! 5");
-        //driver.executeScript("flutter:waitForFirstFrame");
+        System.out.println("!!! 5");
         Thread.sleep(120000);
-        System.out.println("!!! 6");
-        //Thread.sleep(60000);
         driver.installApp(IOS_APP_PATH);
-        System.out.println("!!! 7");
+        System.out.println("!!! 6");
         Thread.sleep(120000);
         driver.activateApp("com.denysord1988.pocapp");
-        System.out.println("!!! 8");
+        System.out.println("!!! 7");
         //Thread.sleep(60000);
+        //driver.executeScript("flutter:waitForFirstFrame");
         FlutterFinder finder = new FlutterFinder(driver);
-        System.out.println("!!! 9");
+        System.out.println("!!! 8");
         //Thread.sleep(60000);
         finder.byText("Check access").click();
         assertEquals(finder.byValueKey("_accessHeaderTitle").getText(), "Access");
