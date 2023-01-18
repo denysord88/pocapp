@@ -104,7 +104,7 @@ public class MyFirstTest {
     public void accessTest() throws InterruptedException {
         //System.out.println("!!! 5");
         //driver.executeScript("flutter:waitForFirstFrame");
-        //Thread.sleep(60000);
+        Thread.sleep(120000);
         System.out.println("!!! 6");
         //Thread.sleep(60000);
         driver.installApp(IOS_APP_PATH);
