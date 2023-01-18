@@ -27,6 +27,7 @@ public class MyFirstTest {
 
     @BeforeTest
     public void setUpAppium() {
+        System.out.println("!!! 1");
         service = AppiumDriverLocalService.
                 buildService(new AppiumServiceBuilder()
                         .usingPort(4200)
@@ -34,14 +35,15 @@ public class MyFirstTest {
                         .withArgument(() -> "--allow-insecure", "get_server_logs")
                         .withArgument(() -> "--log-level", "debug"));
         service.start();
+        System.out.println("!!! 2");
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability(MobileCapabilityType.ENABLE_PERFORMANCE_LOGGING, true);
+        capabilities.setCapability(MobileCapabilityType.ENABLE_PERFORMANCE_LOGGING, false);
         capabilities.setCapability("appium:noReset", false);
         capabilities.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, 60000);
         capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "Flutter");
-        capabilities.setCapability(IOSMobileCapabilityType.SHOW_IOS_LOG, true);
-        capabilities.setCapability(IOSMobileCapabilityType.SHOW_XCODE_LOG, true);
+        capabilities.setCapability(IOSMobileCapabilityType.SHOW_IOS_LOG, false);
+        capabilities.setCapability(IOSMobileCapabilityType.SHOW_XCODE_LOG, false);
         capabilities.setCapability("webkitResponseTimeout", 60000);
         capabilities.setCapability(IOSMobileCapabilityType.IOS_INSTALL_PAUSE, 60000);
         capabilities.setCapability(IOSMobileCapabilityType.WDA_LAUNCH_TIMEOUT, 30000);
@@ -57,11 +59,13 @@ public class MyFirstTest {
         capabilities.setCapability(IOSMobileCapabilityType.WDA_LOCAL_PORT, 4000);
         capabilities.setCapability(IOSMobileCapabilityType.AUTO_ACCEPT_ALERTS, false);
         capabilities.setCapability(IOSMobileCapabilityType.AUTO_DISMISS_ALERTS, false);
-        capabilities.setCapability(MobileCapabilityType.APP, IOS_APP_PATH);
-        capabilities.setCapability(IOSMobileCapabilityType.BUNDLE_ID, "com.denysord1988.pocapp");
+        //capabilities.setCapability(MobileCapabilityType.APP, IOS_APP_PATH);
+        //capabilities.setCapability(IOSMobileCapabilityType.BUNDLE_ID, "com.denysord1988.pocapp");
 
+        System.out.println("!!! 3");
         driver = new IOSDriver(service.getUrl(), capabilities);
-        driver.executeScript("flutter:waitForFirstFrame");
+        //driver.executeScript("flutter:waitForFirstFrame");
+        System.out.println("!!! 4");
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
     }
 
@@ -98,8 +102,20 @@ public class MyFirstTest {
 
     @Test()
     public void accessTest() throws InterruptedException {
+        //System.out.println("!!! 5");
+        //driver.executeScript("flutter:waitForFirstFrame");
+        //Thread.sleep(60000);
+        System.out.println("!!! 6");
+        //Thread.sleep(60000);
+        driver.installApp(IOS_APP_PATH);
+        System.out.println("!!! 7");
+        Thread.sleep(60000);
+        driver.activateApp("com.denysord1988.pocapp");
+        System.out.println("!!! 8");
+        //Thread.sleep(60000);
         FlutterFinder finder = new FlutterFinder(driver);
-
+        System.out.println("!!! 9");
+        //Thread.sleep(60000);
         finder.byText("Check access").click();
         assertEquals(finder.byValueKey("_accessHeaderTitle").getText(), "Access");
 
