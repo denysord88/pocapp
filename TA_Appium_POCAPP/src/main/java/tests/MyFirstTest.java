@@ -49,7 +49,7 @@ public class MyFirstTest {
         capabilities.setCapability(IOSMobileCapabilityType.WDA_LAUNCH_TIMEOUT, 120000);
         capabilities.setCapability(IOSMobileCapabilityType.WDA_CONNECTION_TIMEOUT, 120000);
         capabilities.setCapability(IOSMobileCapabilityType.USE_PREBUILT_WDA, false);
-        capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "16.1");
+        capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "16.2");
         capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, MobilePlatform.IOS);
         if (IOS_SIMULATOR_UUID.isEmpty()) {
             capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "iPhone 13 Pro Max");
@@ -113,6 +113,11 @@ public class MyFirstTest {
         driver.executeScript("flutter:waitForFirstFrame");
         System.out.println("!!! 8");
         FlutterFinder finder = new FlutterFinder(driver);
+
+
+        finder.byValueKey("_webViewTextField").click();
+        finder.byValueKey("_webViewTextField").sendKeys("12345");
+
         finder.byText("Check access").click();
         assertEquals(finder.byValueKey("_accessHeaderTitle").getText(), "Access");
 
