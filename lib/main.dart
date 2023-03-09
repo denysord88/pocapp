@@ -4,7 +4,11 @@ import 'package:flutter_driver/driver_extension.dart';
 import 'my_access.dart';
 
 void main() {
-  enableFlutterDriverExtension();
+  // enableTextEntryEmulation: false (shows physical keyboard and Appium will
+  // be able to send keys using driver with NATIVE_APP context)
+  // enableTextEntryEmulation: true (hide physical keyboard and Appium will
+  // be able to send keys using FlutterFinder class with FLUTTER context)
+  enableFlutterDriverExtension(enableTextEntryEmulation: false);
   runApp(const MyApp());
 }
 
@@ -52,8 +56,9 @@ class FirstRoute extends State<MyCustomForm> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            const TextField(),
             const TextField(
-              key: Key('_webViewTextField'),
+              key: ValueKey('_TextFieldValueKey'),
             ),
             TextButton(
               key: const Key('_checkAccessButton'),

@@ -27,7 +27,7 @@ public class MyFirstTest {
 
     @BeforeTest
     public void setUpAppium() {
-        System.out.println("!!! 1");
+        System.out.println("!!! 1 Starting the Appium service");
         service = AppiumDriverLocalService.
                 buildService(new AppiumServiceBuilder()
                         .usingPort(4200)
@@ -35,20 +35,25 @@ public class MyFirstTest {
                         .withArgument(() -> "--allow-insecure", "get_server_logs")
                         .withArgument(() -> "--log-level", "debug"));
         service.start();
-        System.out.println("!!! 2");
 
+        System.out.println("!!! 2 Creating Capabilities");
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability(MobileCapabilityType.ENABLE_PERFORMANCE_LOGGING, false);
         capabilities.setCapability("appium:noReset", false);
-        capabilities.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, 120000);
         capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "Flutter");
-        capabilities.setCapability(IOSMobileCapabilityType.SHOW_IOS_LOG, true);
+
+        // Logging:
+        capabilities.setCapability(IOSMobileCapabilityType.SHOW_IOS_LOG, false);
         capabilities.setCapability(IOSMobileCapabilityType.SHOW_XCODE_LOG, true);
-        capabilities.setCapability("webkitResponseTimeout", 120000);
-        capabilities.setCapability(IOSMobileCapabilityType.IOS_INSTALL_PAUSE, 120000);
-        capabilities.setCapability(IOSMobileCapabilityType.WDA_LAUNCH_TIMEOUT, 120000);
-        capabilities.setCapability(IOSMobileCapabilityType.WDA_CONNECTION_TIMEOUT, 120000);
-        capabilities.setCapability(IOSMobileCapabilityType.USE_PREBUILT_WDA, false);
+        capabilities.setCapability(MobileCapabilityType.ENABLE_PERFORMANCE_LOGGING, false);
+
+        // Timeouts:
+        capabilities.setCapability("webkitResponseTimeout", 5000);
+        capabilities.setCapability(IOSMobileCapabilityType.WDA_LAUNCH_TIMEOUT, 15000);
+        capabilities.setCapability(IOSMobileCapabilityType.WDA_CONNECTION_TIMEOUT, 15000);
+        capabilities.setCapability(IOSMobileCapabilityType.IOS_INSTALL_PAUSE, 15000);
+        capabilities.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, 5000);
+
+        capabilities.setCapability(IOSMobileCapabilityType.USE_PREBUILT_WDA, true);
         capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "16.2");
         capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, MobilePlatform.IOS);
         if (IOS_SIMULATOR_UUID.isEmpty()) {
@@ -62,10 +67,9 @@ public class MyFirstTest {
         //capabilities.setCapability(MobileCapabilityType.APP, IOS_APP_PATH);
         //capabilities.setCapability(IOSMobileCapabilityType.BUNDLE_ID, "com.denysord1988.pocapp");
 
-        System.out.println("!!! 3");
+        System.out.println("!!! 3 Starting the driver");
         driver = new IOSDriver(service.getUrl(), capabilities);
         //driver.executeScript("flutter:waitForFirstFrame");
-        System.out.println("!!! 4");
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
     }
 
@@ -102,21 +106,34 @@ public class MyFirstTest {
 
     @Test()
     public void accessTest() throws InterruptedException {
-        System.out.println("!!! 5");
-        Thread.sleep(120000);
+        System.out.println("!!! 4 Installing the application");
         driver.installApp(IOS_APP_PATH);
-        System.out.println("!!! 6");
-        Thread.sleep(120000);
+        Thread.sleep(5000);
+
+        System.out.println("!!! 5 Starting the application");
         driver.activateApp("com.denysord1988.pocapp");
-        System.out.println("!!! 7");
-        Thread.sleep(60000);
+        Thread.sleep(5000);
+
+        System.out.println("!!! 6 flutter:waitForFirstFrame");
         driver.executeScript("flutter:waitForFirstFrame");
-        System.out.println("!!! 8");
+
+        System.out.println("!!! 7 Creating FlutterFinder object");
         FlutterFinder finder = new FlutterFinder(driver);
 
+        driver.context("NATIVE_APP");
+        driver.findElements(By.xpath("//*[@label='']")).get(0).sendKeys("1234567890");
+        driver.context("FLUTTER");
 
-        finder.byValueKey("_webViewTextField").click();
-        finder.byValueKey("_webViewTextField").sendKeys("12345");
+        driver.executeScript("flutter:setTextEntryEmulation", true);
+        finder.byValueKey("_TextFieldValueKey").sendKeys("0987654321");
+        driver.executeScript("flutter:setTextEntryEmulation", false);
+
+        driver.context("NATIVE_APP");
+        String textFieldWithoutKey = driver.findElements(By.xpath("//*[@label='']")).get(0).getText();
+        driver.context("FLUTTER");
+        finder.byText("0987654321").click();
+
+        assertEquals(textFieldWithoutKey, "1234567890");
 
         finder.byText("Check access").click();
         assertEquals(finder.byValueKey("_accessHeaderTitle").getText(), "Access");
