@@ -54,10 +54,10 @@ public class MyFirstTest {
         capabilities.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, 5000);
 
         capabilities.setCapability(IOSMobileCapabilityType.USE_PREBUILT_WDA, true);
-        capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "16.2");
-        capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, MobilePlatform.IOS);
+        capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "13");
+        capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, MobilePlatform.ANDROID);
         if (IOS_SIMULATOR_UUID.isEmpty()) {
-            capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "iPhone 13 Pro Max");
+            capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "NewApp_TA_Pixel_5_Android_33");
         } else {
             capabilities.setCapability(MobileCapabilityType.UDID, IOS_SIMULATOR_UUID);
         }
@@ -120,9 +120,9 @@ public class MyFirstTest {
         System.out.println("!!! 7 Creating FlutterFinder object");
         FlutterFinder finder = new FlutterFinder(driver);
 
-        driver.context("NATIVE_APP");
-        driver.findElements(By.xpath("//*[@label='']")).get(0).sendKeys("1234567890");
-        driver.context("FLUTTER");
+//        driver.context("NATIVE_APP");
+//        driver.findElements(By.xpath("//*[@label='']")).get(0).sendKeys("1234567890");
+//        driver.context("FLUTTER");
 
         driver.executeScript("flutter:setTextEntryEmulation", true);
         finder.byValueKey("_TextFieldValueKey").sendKeys("0987654321");
